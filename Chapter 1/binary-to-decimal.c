@@ -16,7 +16,7 @@ int main()
 
     printf("\nEnter binary string: ");
     for (int i = 0; i < len; ) {
-        dec = dec + pow(2, len - i - 1);
+        dec = dec + bin[i] * pow(2, len - i - 1);
         ++i;
     }
 
