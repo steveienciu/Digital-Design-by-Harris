@@ -7,7 +7,7 @@
 int main()
 {
     char *bin;
-    int dec = 0, len;
+    int dec = 0, len, count = 0, ch;
 
     printf("\nEnter length of binary string: ");
     scanf("%d", &len);
@@ -15,10 +15,14 @@ int main()
     bin = malloc(len * sizeof(char));
 
     printf("Enter binary string: ");
-    for (int i = 0; i < len; ) {
-        scanf("%c", &bin[i]);
-        dec = dec + (bin[i] - '0') * pow(2, len - i - 1);
-        ++i;
+    while (count != len) {
+        ch = getchar();
+        if (ch == '\n') {
+            continue;
+        }
+        bin[count] = ch;
+        dec = dec + (bin[count] - '0') * pow(2, len - count - 1);
+        ++count;
     }
 
     printf("\nThe decimal number is: %d\n", dec);
