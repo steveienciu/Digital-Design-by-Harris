@@ -14,13 +14,14 @@ int main()
 
     bin = malloc(len * sizeof(char));
 
-    printf("\nEnter binary string: ");
+    printf("Enter binary string: ");
     for (int i = 0; i < len; ) {
-        dec = dec + bin[i] * pow(2, len - i - 1);
+        scanf("%c", &bin[i]);
+        dec = dec + (bin[i] - '0') * pow(2, len - i - 1);
         ++i;
     }
 
-    printf("\nThe decimal number is: %d", dec);
+    printf("\nThe decimal number is: %d\n", dec);
 
     return 0;
 }
