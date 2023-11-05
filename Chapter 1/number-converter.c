@@ -19,6 +19,7 @@ int main()
     printf("Enter the second base: ");
     scanf("%d", &b2);
 
+    // check for proper user inputs
     if ((b1 != 2 && b1 != 8 && b1 != 10 && b1 != 16) || (b2 != 2 && b2 != 8 && b2 != 10 && b2 != 16)) {
         fprintf(stderr, "\nImproper base entered in main. Leaving program.\n");
         exit(0);
@@ -40,6 +41,7 @@ int main()
             }
             string[i++] = tolower(ch);
 
+            // check for proper user inputs
             if (b1 == 2 && (ch != '0' && ch != '1')) {
                 fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
                 free(string);
@@ -62,7 +64,7 @@ int main()
         scanf("%d", &decimal);
     }
 
-    if (b2 == 10) {
+    if (b2 == 10) { // produce the output of the conversion
         decimal = base_to_decimal(b1, len, string);
         printf("Conversion from base %d to base %d is %d.\n", b1, b2, decimal);
     }
@@ -83,6 +85,7 @@ int base_to_decimal(int b1, int len, char *string)
 {
     int count = 0, sum = 0;
 
+    // could put some error checking here to make sure pre and post results are good
     for (int i = 0; i < len; ++i) {
         if (isalpha(string[i])) {
             sum = sum + (string[i] - 'a' + 10) * pow(b1, len - i - 1);
@@ -105,6 +108,7 @@ void decimal_to_base(int decimal, int b2, int b1)
         ++count;
     }
 
+    // could put some error checking here to make sure pre and post results are good
     output = malloc(count * sizeof(char));
     for (int i = 0; i < count; ++i) {
         quot = decimal / b2;
