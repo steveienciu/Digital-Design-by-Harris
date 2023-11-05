@@ -19,17 +19,42 @@ int main()
     printf("Enter the second base: ");
     scanf("%d", &b2);
 
+    if ((b1 != 2 && b1 != 8 && b1 != 10 && b1 != 16) || (b2 != 2 && b2 != 8 && b2 != 10 && b2 != 16)) {
+        fprintf(stderr, "\nImproper base entered in main. Leaving program.\n");
+        exit(0);
+    }
+    else if (b1 == b2) {
+        fprintf(stderr, "\nBases equal in main. Leaving program.\n");
+        exit(0);
+    }
+
     if (b1 != 10) { // get string of chars for base 2, base 8, and base 16
-        printf("\nEnter length of base %d string: ", len);
+        printf("\nEnter length of base %d string: ", b1);
         scanf("%d", &len);
         string = malloc(len * sizeof(char));
-        printf("\nEnter your base %d number: ", b1);
+        printf("Enter your base %d number: ", b1);
         for (int i = 0; i < len; ) { // will only take first len characters inpuuted, rest will be ignored
             ch = getchar();
             if (ch == '\n') {
                 continue;
             }
             string[i++] = tolower(ch);
+
+            if (b1 == 2 && (ch != '0' && ch != '1')) {
+                fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
+                free(string);
+                exit(0);
+            }
+            else if (b1 == 8 && (ch < '0' || ch > '7')) {
+                fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
+                free(string);
+                exit(0);
+            }
+            else if (b1 == 16 && ((ch < '0' || ch > '9') && (ch < 'a' || ch > 'f'))) {
+                fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
+                free(string);
+                exit(0);
+            }
         }
     }
     else { // get integer value for base 10 number
