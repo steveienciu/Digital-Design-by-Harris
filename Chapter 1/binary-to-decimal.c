@@ -17,8 +17,12 @@ int main()
     printf("Enter binary string: ");
     while (count != len) {
         ch = getchar();
-        if (ch == '\n') {
+        if (ch == '\n') { // to take into account for trailing enter
             continue;
+        }
+        if (ch != '0' && ch != '1') {
+            printf("\nInvalid character. Leaving program.\n");
+            exit(0);
         }
         bin[count] = ch;
         dec = dec + (bin[count] - '0') * pow(2, len - count - 1);
