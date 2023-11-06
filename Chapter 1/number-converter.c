@@ -34,7 +34,7 @@ int main()
         scanf("%d", &len);
         string = malloc(len * sizeof(char));
         printf("Enter your base %d number: ", b1);
-        for (int i = 0; i < len; ) { // will only take first len characters inpuuted, rest will be ignored
+        for (int i = 0; i < len; ) { // will only take first len characters inputted, rest will be ignored
             ch = getchar();
             if (ch == '\n') {
                 continue;
@@ -117,7 +117,7 @@ void decimal_to_base(int decimal, int b2, int b1)
             ch = hex[temp - 10];
         }
         else {
-            ch = (decimal - quot * b2) + '0';
+            ch = temp + '0';
         }
         output[i] = ch;
         decimal = quot;
