@@ -31,5 +31,7 @@ int main()
 
     printf("\nThe decimal number is: %d\n", dec);
 
+    free(bin);
+
     return 0;
 }
