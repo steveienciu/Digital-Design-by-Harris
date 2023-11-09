@@ -75,6 +75,7 @@ int main()
     else {
         decimal_to_base(decimal, b2, b1);
     }
+    printf("\n");
 
     free(string);
 
