@@ -52,7 +52,7 @@ int main()
                 free(string);
                 exit(0);
             }
-            else if (b1 == 16 && ((ch < '0' || ch > '9') && (ch < 'a' || ch > 'f'))) {
+            else if (b1 == 16 && ((ch < '0' || ch > '9') && (ch < 'a' || ch > 'f') && (ch < 'A' || ch > 'F'))) {
                 fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
                 free(string);
                 exit(0);
