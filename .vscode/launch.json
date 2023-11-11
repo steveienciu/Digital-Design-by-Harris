@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/steve/Desktop/Different/Electronics/Digital Electronics/Digital-Design-by-Harris",
-      "program": "c:/Users/steve/Desktop/Different/Electronics/Digital Electronics/Digital-Design-by-Harris/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

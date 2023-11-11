@@ -5,6 +5,11 @@
 #include <math.h>
 #include <ctype.h>
 
+#define BASE_BINARY 2
+#define BASE_OCTAL 8
+#define BASE_DECIMAL 10
+#define BASE_HEX 16 
+
 int base_to_decimal(int b1, int len, char *string);
 void decimal_to_base(int decimal, int b2, int b1);
 
@@ -20,7 +25,7 @@ int main()
     scanf("%d", &b2);
 
     // check for proper user inputs
-    if ((b1 != 2 && b1 != 8 && b1 != 10 && b1 != 16) || (b2 != 2 && b2 != 8 && b2 != 10 && b2 != 16)) {
+    if ((b1 != BASE_BINARY && b1 != BASE_OCTAL && b1 != BASE_DECIMAL && b1 != BASE_HEX) || (b2 != BASE_BINARY && b2 != BASE_OCTAL && b2 != BASE_DECIMAL && b2 != BASE_HEX)) {
         fprintf(stderr, "\nImproper base entered in main. Leaving program.\n");
         exit(0);
     }
@@ -42,17 +47,17 @@ int main()
             string[i++] = tolower(ch);
 
             // check for proper user inputs
-            if (b1 == 2 && (ch != '0' && ch != '1')) {
+            if (b1 == BASE_BINARY && (ch != '0' && ch != '1')) {
                 fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
                 free(string);
                 exit(0);
             }
-            else if (b1 == 8 && (ch < '0' || ch > '7')) {
+            else if (b1 == BASE_OCTAL && (ch < '0' || ch > '7')) {
                 fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
                 free(string);
                 exit(0);
             }
-            else if (b1 == 16 && ((ch < '0' || ch > '9') && (ch < 'a' || ch > 'f') && (ch < 'A' || ch > 'F'))) {
+            else if (b1 == BASE_HEX && ((ch < '0' || ch > '9') && (ch < 'a' || ch > 'f') && (ch < 'A' || ch > 'F'))) {
                 fprintf(stderr, "\nImproper base %d string inputted. Leaving program.\n", b1);
                 free(string);
                 exit(0);
@@ -64,11 +69,11 @@ int main()
         scanf("%d", &decimal);
     }
 
-    if (b2 == 10) { // produce the output of the conversion
+    if (b2 == BASE_DECIMAL) { // produce the output of the conversion
         decimal = base_to_decimal(b1, len, string);
         printf("Conversion from base %d to base %d is %d.\n", b1, b2, decimal);
     }
-    else if (b1 != 10) {
+    else if (b1 != BASE_DECIMAL) {
         decimal = base_to_decimal(b1, len, string);
         decimal_to_base(decimal, b2, b1);
     }
