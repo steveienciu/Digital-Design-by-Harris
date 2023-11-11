@@ -37,7 +37,12 @@ int main()
     if (b1 != 10) { // get string of chars for base 2, base 8, and base 16
         printf("\nEnter length of base %d string: ", b1);
         scanf("%d", &len);
+
         string = malloc(len * sizeof(char));
+        if (string == NULL) {
+            fprintf(stderr, "Cannot allocate space for base %d string. Leaving program.\n", b1);
+        }
+
         printf("Enter your base %d number: ", b1);
         for (int i = 0; i < len; ) { // will only take first len characters inputted, rest will be ignored
             ch = getchar();
@@ -80,7 +85,6 @@ int main()
     else {
         decimal_to_base(decimal, b2, b1);
     }
-    printf("\n");
 
     free(string);
 
@@ -116,6 +120,10 @@ void decimal_to_base(int decimal, int b2, int b1)
 
     // could put some error checking here to make sure pre and post results are good
     output = malloc(count * sizeof(char));
+    if (output == NULL) {
+        fprintf(stderr, "Cannot allocate space in decimal_to_base. Leaving program.\n");
+    }
+
     for (int i = 0; i < count; ++i) {
         quot = decimal / b2;
         temp = decimal - quot * b2;

@@ -13,6 +13,9 @@ int main()
     scanf("%d", &len);
 
     bin = malloc(len * sizeof(char));
+    if (bin == NULL) {
+        fprintf(stderr, "Cannot allocate space for binary string. Leaving program.\n");
+    }
 
     printf("Enter binary string: ");
     while (count != len) {
